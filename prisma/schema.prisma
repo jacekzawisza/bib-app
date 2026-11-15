@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Buch {
+  isbn            String        @id
+  titel           String
+  autor           String
+  erscheinungsjahr Int
+  exemplare       Exemplar[]
+  vormerkungen    Vormerkung[]
+}
+
+model Exemplar {
+  id        Int       @id @default(autoincrement())
+  exemplarNr String   @map("exemplar_nr")
+  medientyp Medientyp
+  status    ExemplarStatus
+  buchIsbn  String    @map("buch_isbn")
+  buch      Buch      @relation(fields: [buchIsbn], references: [isbn])
+  ausleihen Ausleihe[]
+
+  @@map("exemplar")
+}
+
+enum Medientyp {
+  Buch
+  Spiel
+}
+
+enum ExemplarStatus {
+  verfuegbar
+  verliehen
+  vorgemerkt
+}
+
+model Leser {
+  id              Int           @id @default(autoincrement())
+  leserNr         String        @unique @map("leser_nr")
+  name            String
+  geburtsdatum    DateTime
+  ausweisGueltigBis DateTime    @map("ausweis_gueltig_bis")
+  ausleihen       Ausleihe[]
+  vormerkungen    Vormerkung[]
+
+  @@map("leser")
+}
+
+model Ausleihe {
+  id            Int       @id @default(autoincrement())
+  leserId       Int       @map("leser_id")
+  exemplarId    Int       @map("exemplar_id")
+  ausgeliehenAm DateTime  @map("ausgeliehen_am")
+  faelligAm     DateTime  @map("faellig_am")
+  zurueckAm     DateTime? @map("zurueck_am")
+  leser         Leser     @relation(fields: [leserId], references: [id])
+  exemplar      Exemplar  @relation(fields: [exemplarId], references: [id])
+  gebuehr       Gebuehr?
+
+  @@map("ausleihe")
+}
+
+model Gebuehr {
+  id         Int     @id @default(autoincrement())
+  ausleiheId Int     @unique @map("ausleihe_id")
+  betrag     Float
+  bezahlt    Boolean @default(false)
+  ausleihe   Ausleihe @relation(fields: [ausleiheId], references: [id])
+
+  @@map("gebuehr")
+}
+
+model Vormerkung {
+  id           Int      @id @default(autoincrement())
+  leserId      Int      @map("leser_id")
+  buchIsbn     String   @map("buch_isbn")
+  vorgemerktAm DateTime @map("vorgemerkt_am")
+  leser        Leser    @relation(fields: [leserId], references: [id])
+  buch         Buch     @relation(fields: [buchIsbn], references: [isbn])
+
+  @@map("vormerkung")
+}
+
+model Mitarbeiter {
+  id   Int    @id @default(autoincrement())
+  name String
+  rolle Rolle
+}
+
+enum Rolle {
+  Fest
+  Ehrenamt
+}
