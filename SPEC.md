@@ -7,7 +7,7 @@ Quelle: Meeting 1 mit der Leiterin Petra Lorenz (Demo, 12 Nachrichten). Zu jeder
 | Entität | Attribute |
 |---|---|
 | Buch | isbn, titel, autor, erscheinungsjahr |
-| Exemplar | exemplar_nr, buch → Buch, medientyp (Buch, Spiel), status (verfügbar, verliehen, vorgemerkt) |
+| Exemplar | exemplar_nr, buch → Buch, medientyp (Buch, Spiel), status (verfügbar, verliehen, vorgemerkt), standort |
 | Leser | leser_nr, name, geburtsdatum, ausweis_gueltig_bis |
 | Ausleihe | ausleihe_id, leser → Leser, exemplar → Exemplar, ausgeliehen_am, faellig_am, zurueck_am |
 | Gebühr | gebuehr_id, ausleihe → Ausleihe, betrag, bezahlt |

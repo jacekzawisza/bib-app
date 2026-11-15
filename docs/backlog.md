@@ -9,7 +9,7 @@
 
 | ID | Name | Phase | Status | BR / Entitäten |
 |---|---|---|---|---|
-| F-001 | Exemplar ausleihen und zurückgeben | 1 | offen | Buch, Exemplar, Leser, Ausleihe; BR1, BR3 |
+| F-001 | Exemplar ausleihen und zurückgeben | 1 | fertig | Buch, Exemplar, Leser, Ausleihe; BR1, BR3 |
 | F-002 | Gebühren berechnen und bezahlen | 1 | offen | Gebühr, Ausleihe; BR2 |
 | F-003 | Leser registrieren und Konto verwalten | 1 | offen | Leser |
 | F-004 | Vormerkung anlegen und einlösen | 2 | offen | Vormerkung, Leser, Buch, Ausleihe |

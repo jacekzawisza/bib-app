@@ -19,6 +19,7 @@ model Buch {
 model Exemplar {
   id        Int       @id @default(autoincrement())
   exemplarNr String   @map("exemplar_nr")
+  standort    String
   medientyp Medientyp
   status    ExemplarStatus
   buchIsbn  String    @map("buch_isbn")
