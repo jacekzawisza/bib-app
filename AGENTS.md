@@ -9,7 +9,7 @@ Briefing für den Coding-Agenten. Lies diese Datei zu Beginn jeder Session, dana
 ## Stack
 
 - Framework: <z. B. Next.js>
-- Datenbank: SQLite über Prisma (lokale Datei, kein Server)
+- Datenbank: SQLite über Prisma 7 (lokale Datei, kein Server). Installieren mit `npm install prisma@7 @prisma/client@7`, keine Vorabversion.
 - Start: `npm run dev`, danach http://localhost:3000
 
 ## Arbeitsweise
@@ -18,7 +18,7 @@ Briefing für den Coding-Agenten. Lies diese Datei zu Beginn jeder Session, dana
 - Erst einen Plan zeigen, dann bauen, wenn ich zustimme.
 - Starte die App selbst und prüfe, dass sie läuft. Lies Fehler im Terminal und behebe sie.
 - Schreib für jede Business Rule aus der SPEC.md mindestens einen Test.
-- Änderungen am Datenmodell immer als Prisma-Migration, nie die Datenbankdatei von Hand ändern.
+- Änderungen am Datenmodell immer als Prisma-Migration (`npx prisma migrate dev`), nie die Datenbankdatei von Hand ändern.
 - Erkläre mir in zwei Sätzen, was du geändert hast, auf Deutsch und ohne Fachjargon.
 
 ## Backlog (`docs/backlog.md`)
